@@ -1,5 +1,5 @@
 [build]
-  command   = "npm install && npm --workspace shared run build && npm --workspace server run build && npm --workspace client run build"
+  command   = "npm install --include=dev && npm --workspace shared run build && npm --workspace server run build && npm --workspace client run build"
   publish   = "client/dist"
   functions = "netlify/functions"
 
