@@ -3,6 +3,15 @@
   publish   = "client/dist"
   functions = "netlify/functions"
 
+# These are not real secrets:
+#   - SUPABASE_URL and SUPABASE_ANON_KEY are public (anon key is the publishable key,
+#     baked into the client bundle by design).
+#   - NODE_ENV and CORS_ORIGIN are config values, not credentials.
+# The only real secret (SUPABASE_SERVICE_ROLE_KEY) is set in the Netlify dashboard
+# only and never appears in committed files.
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "SUPABASE_URL,SUPABASE_ANON_KEY,NODE_ENV,CORS_ORIGIN"
+
 [functions]
   node_bundler = "nft"
 
