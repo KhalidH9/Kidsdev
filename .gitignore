@@ -8,12 +8,13 @@ coverage
 .idea
 .turbo
 
-# Environment files — add secrets in Netlify dashboard
-.env
-.env.local
-.env.*.local
-server/.env
-client/.env
+# Environment files — secrets live in Netlify dashboard.
+# Patterns are anchored (/) so they only match at the repo root or the
+# explicit subpath. client/.env is intentionally tracked.
+/.env
+/.env.local
+/.env.*.local
+/server/.env
 
 # Netlify cache
 .netlify/
