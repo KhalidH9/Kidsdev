@@ -1,0 +1,99 @@
+@import '@fontsource-variable/inter/index.css';
+@import '@fontsource/cairo/400.css';
+@import '@fontsource/cairo/500.css';
+@import '@fontsource/cairo/600.css';
+@import '@fontsource/cairo/700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    background: #ffffff;
+    color: #0a0a0f;
+    font-family:
+      'Inter Variable',
+      Inter,
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      'Segoe UI',
+      Roboto,
+      sans-serif;
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  /* Arabic: Cairo covers Arabic + Latin — switch when dir is rtl. */
+  :lang(ar) body,
+  [dir='rtl'] body {
+    font-family:
+      'Cairo',
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      sans-serif;
+    font-feature-settings: normal;
+  }
+  /* Native focus ring is replaced by a token-driven ring on each component. */
+  *:focus {
+    outline: none;
+  }
+  *:focus-visible {
+    outline: none;
+  }
+  /* Tabular numerals make tables and stats align cleanly. */
+  table,
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  .focus-ring {
+    @apply outline-none ring-2 ring-purple-200 ring-offset-2 ring-offset-white;
+  }
+  .text-muted {
+    color: #5b5668;
+  }
+  .text-subtle {
+    color: #8a8595;
+  }
+  /* Soft horizontal fade for overflowing tab bars on small screens. */
+  .scroll-fade-x {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 16px,
+      black calc(100% - 16px),
+      transparent 100%
+    );
+  }
+  /* Skeleton shimmer surface — used by skeleton loaders. */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      #f1eef6 0%,
+      #faf9fc 50%,
+      #f1eef6 100%
+    );
+    background-size: 800px 100%;
+    animation: shimmer 1400ms linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .skeleton,
+    .animate-breathe,
+    .animate-pop-in,
+    .animate-toast-in,
+    .animate-fade-in,
+    .animate-slide-from-left {
+      animation: none !important;
+    }
+  }
+}

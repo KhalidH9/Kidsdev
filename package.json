@@ -1,0 +1,25 @@
+{
+  "name": "kids-aba-dev",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ABA school behavior support system — Netlify deployment",
+  "workspaces": [
+    "shared",
+    "server",
+    "client"
+  ],
+  "dependencies": {
+    "serverless-http": "^3.2.0"
+  },
+  "scripts": {
+    "install:all": "npm install",
+    "dev:server": "npm --workspace server run start:dev",
+    "dev:client": "npm --workspace client run dev",
+    "build": "npm --workspace shared run build && npm --workspace server run build && npm --workspace client run build",
+    "lint": "npm --workspace server run lint && npm --workspace client run lint",
+    "typecheck": "npm --workspace shared run typecheck && npm --workspace server run typecheck && npm --workspace client run typecheck"
+  },
+  "engines": {
+    "node": ">=18.18"
+  }
+}

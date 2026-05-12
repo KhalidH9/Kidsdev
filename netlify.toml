@@ -1,0 +1,20 @@
+[build]
+  command   = "npm install && npm --workspace shared run build && npm --workspace server run build && npm --workspace client run build"
+  publish   = "client/dist"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "nft"
+
+# Route all /api/* requests to the NestJS serverless function
+[[redirects]]
+  from   = "/api/*"
+  to     = "/.netlify/functions/api"
+  status = 200
+  force  = true
+
+# SPA catch-all — must come last
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200

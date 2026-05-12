@@ -1,0 +1,26 @@
+node_modules
+dist
+build
+.DS_Store
+coverage
+*.log
+.vscode
+.idea
+.turbo
+
+# Environment files — add secrets in Netlify dashboard
+.env
+.env.local
+.env.*.local
+server/.env
+client/.env
+
+# Netlify cache
+.netlify/
+
+# Claude Code session data
+.claude/
+
+# Test artefacts
+test-results/
+playwright-report/
